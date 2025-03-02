@@ -55,3 +55,22 @@ An example:
   padding: 25px;
   border: 5px solid black;
 }
+
+## Positioning 
+
+The position property describes the way an element locates itself in a website 
+
+there are 5 different values that define poisition : 
+
+* static - always positioned towards the normal flow of the page
+
+* relative - can be set relative to its normal/static position, e.g by saying {position: relative; left: x px;}
+
+* fixed - a fixed element does not leave a gap, stays in the same page even if scrolling. 
+
+* absolute - are positioned to the nearest defined ancestor 
+
+* sticky - positioned based on the users scroll position 
+
+
+
