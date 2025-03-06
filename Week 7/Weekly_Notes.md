@@ -1,5 +1,7 @@
 # Week 7 notes
 
+# March 4th
+
 ## Classes
 
 * Classes are basically pointers to certain attributes contained within a variable within style sheet
@@ -65,5 +67,74 @@ E.g `.mycontainer {display: flex;}`
 * A wireframe is a simple sketch of a webpage layout. - It shows where elements like headers, images, and buttons will go
 
 
+# March 6th
 
+## Image sizing 
 
+* What can we do about image overflowing 
+
+1. Make the max width/height 100 % of the image. This will make it so the image is the full width of the box
+
+2. Use the object-fit property to make sure the image fits in the box a certain way: 
+
+- cover and contain are different fit properties. 
+
+3. The asterix e.g for class .wrapper > * means for all things under the class wrapper. A useful attribute system. 
+
+### Altered image : 
+
+1. The `border-radius` property adds a circular look 
+
+2. A thumbnail image we can use `border` property with padding which defines the space betweeen the image and the border 
+
+3. You can create a hover effect e.g "classname:hover" which adds a link over the thumbnail picture. 
+
+note: to make a link open a new window we do target = "_blank" before href. 
+
+4. responsive images 
+- Responsive images will automatically adjust to fit the size of the screen. If you want an image to scale down if it has to, but never scale up to be larger than its original size, add the following:
+
+`img {  max-width: 100%; height: auto;}`
+
+5. Image transparency:  use the poroperty `opacity` for your image 
+
+### Text in images: 
+
+* make a dive class = "textcontainer" 
+
+* seperate all text in seperate dives with classes defining where each dive of text will be!
+
+### Fade and Overlay: 
+
+* one of the hover effects is activated when the mouse is over the image 
+
+* create a container with both the image itself ahd the overlay. 
+
+* the overlay is activated by .container:hover .overlay { opacity: 1;} 
+
+* We put the text under the div so it only appears when the class is activaged/hovered. 
+
+## Transforming and Transitions: 
+
+### Functions: 
+
+* `translate()` which moves and element toa  different position : ` div {transform : translate(xpx,ypx)}`
+
+* `rotate()` Rotates ahahaha
+
+* `scale() or just scaleX() and scaleY()` alters the size in x and y
+
+* `skew()` is an element a hcih takes (xdeg,ydeg)
+
+* `matrix()` does scale skew translate all in one. 
+
+* we can create a hover for a class which can transform any div or element. 
+## 3D transform: 
+
+* you can rotate() in Z direction as well 
+
+## Transitions 
+
+* You need timing and dimensions 
+
+* e.g `transition: transform, opacity 2s;` in a class of any hover transform will take that amount of time to happen. Same with opacity.  
