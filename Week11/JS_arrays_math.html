@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grocery & Maths 🍎➕</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
+    h1, h2 {
+      color: #4CAF50;
+    }
+    ul {
+      list-style-type: square;
+      display: inline-block;
+      text-align: left;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 20px;
+      box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .math-output {
+      background-color: #f4f4f4;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      display: inline-block;
+      text-align: left;
+    }
+    .grocery-image {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Grocery List</h1>
+  <ul id="grocery-list"></ul>
+  <div>
+    <button onclick="addItem()">Add 'Oranges'</button>
+    <button onclick="removeLast()">Remove Last Item</button>
+    <button onclick="removeFirst()">Remove First Item</button>
+    <button onclick="addToStart()">Add 'Bananas' to Start</button>
+    <button onclick="showLength()">Show Length</button>
+    <button onclick="searchItem()">Check if 'Milk' is in list</button>
+    <button onclick="getIndex()">Get Index of 'Cheese'</button>
+    <button onclick="joinArray()">Join Array to String</button>
+    <button onclick="splitString()">Split String to Array</button>
+    <button onclick="firstArray()">What is the first item on the list?</button>
+    <button onclick="changeArray()">Swap in 'Butter'</button>
+  </div>
+
+  <div>
+    <img class="grocery-image" src="Milk.jpeg" alt="Milk">
+    <img class="grocery-image" src="Banana.jpeg" alt="Bananas">
+    <img class="grocery-image" src="Butter.jpeg" alt="Butter">
+  </div>
+
+  <h2>Math Playground</h2>
+  <button onclick="runMath()">Run Math Problems</button>
+  <div class="math-output" id="math-output"></div>
+
+  <script>
+    var groceries = ["Milk", "Eggs", "Bread", "Apples", "Cheese"];
+    var groceryString = "";
+
+    function displayGroceries() {
+      const list = document.getElementById("grocery-list");
+      list.innerHTML = "";
+      groceries.forEach(item => {
+        let li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+    }
+
+    function addItem() {
+      groceries.push("Oranges");
+      displayGroceries();
+    }
+
+    function removeLast() {
+      groceries.pop();
+      displayGroceries();
+    }
+
+    function removeFirst() {
+      groceries.shift();
+      displayGroceries();
+    }
+
+    function addToStart() {
+      groceries.unshift("Bananas");
+      displayGroceries();
+    }
+
+    function showLength() {
+      alert(`The grocery list has ${groceries.length} items.`);
+    }
+
+    function searchItem() {
+      alert(groceries.includes("Milk") ? "Milk is on the list!" : "Milk is NOT on the list.");
+    }
+
+    function getIndex() {
+      let index = groceries.indexOf("Cheese");
+      if (index !== -1) {
+        alert(`'Cheese' is at index ${index}`);
+      } else {
+        alert(`'Cheese' is not in the list.`);
+      }
+    }
+
+    function firstArray() {
+      alert(groceries[0]); 
+    }
+
+    function joinArray() {
+      groceryString = groceries.join(", ");
+      alert(`Grocery list as a string: ${groceryString}`);
+    }
+
+    function splitString() {
+      if (groceryString.length === 0) {
+        alert("Join the array first to create a string!");
+        return;
+      }
+      groceries = groceryString.split(", ");
+      displayGroceries();
+      alert("String has been split back into array!");
+    }
+
+    function changeArray() {
+      groceries[2] = "Butter"; 
+      displayGroceries(); 
+    }
+
+    function runMath() {
+      var x = 15;
+      var y = 35;
+      var z = 2.25;
+      var n = 5.35;
+      var output = "";
+
+      output += `<strong>Addition:</strong> ${x + y}<br>`;
+      output += `<strong>Subtraction:</strong> ${y - x}<br>`;
+      output += `<strong>Multiplication:</strong> ${x * y}<br>`;
+      output += `<strong>Division:</strong> ${y / x}<br>`;
+      output += `<strong>Modulos:</strong> ${y % x}<br>`;
+      output += `<strong>Expression:</strong> ${(x + y) * y - 1}<br><br>`;
+
+      x++;
+      output += `<strong>x++:</strong> ${x}<br>`;
+      x += 5;
+      output += `<strong>x += 5:</strong> ${x}<br>`;
+      y--;
+      y -= 5;
+      output += `<strong>y-- then -=5:</strong> ${y}<br><br>`;
+
+      output += `<strong>Math.floor(${z}):</strong> ${Math.floor(z)}<br>`;
+      output += `<strong>Math.ceil(${n}):</strong> ${Math.ceil(n)}<br>`;
+      output += `<strong>Math.round(2.2):</strong> ${Math.round(2.2)}<br>`;
+      output += `<strong>Math.round(2.7):</strong> ${Math.round(2.7)}<br><br>`;
+
+      var rand = Math.random();
+      output += `<strong>Random float:</strong> ${rand}<br>`;
+      output += `<strong>Random Yes/No:</strong> ${Math.round(rand) === 0 ? "No" : "Yes"}<br>`;
+
+      function randNumRange(min, max) {
+        return Math.round(Math.random() * (max - min) + min);
+      }
+
+      output += `<strong>Random number (3-7):</strong> ${randNumRange(3, 7)}<br>`;
+
+      document.getElementById("math-output").innerHTML = output;
+    }
+
+    displayGroceries();
+  </script>
+
+</body>
+</html>
+
