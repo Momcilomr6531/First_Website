@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Random Dog Viewer 🐶</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #e0f7fa;
+      text-align: center;
+      padding: 2rem;
+    }
+    #card {
+      background: white;
+      border-radius: 1rem;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    img {
+      max-width: 100%;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+    }
+    button {
+      padding: 0.6rem 1.2rem;
+      border: none;
+      background-color: #009688;
+      color: white;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+    button:hover {
+      background-color: #00796b;
+    }
+    #breed {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="card">
+    <h1>Random Dog Viewer 🐕</h1>
+    <img id="image" src="" alt="Random Dog"/>
+    <p id="breed">Loading...</p>
+    <button onclick="loadRandomDog()">Next Dog</button>
+    <button onclick="loadShibaDog()">Only Shiba Inu</button>
+  </div>
+
+  <script>
+    // Load random dog on page load
+    window.addEventListener("DOMContentLoaded", loadRandomDog);
+
+    async function loadRandomDog() {
+      const res = await fetch("https://dog.ceo/api/breeds/image/random");
+      const data = await res.json();
+      updateDogCard(data.message);
+    }
+
+    async function loadShibaDog() {
+      const res = await fetch("https://dog.ceo/api/breed/shiba/images/random");
+      const data = await res.json();
+      updateDogCard(data.message, "Shiba Inu");
+    }
+
+    function updateDogCard(imageUrl, breedOverride = null) {
+      const img = document.getElementById("image");
+      img.src = imageUrl;
+
+      const breed = breedOverride || extractBreedFromUrl(imageUrl);
+      document.getElementById("breed").textContent = `Breed: ${breed}`;
+    }
+
+    function extractBreedFromUrl(url) {
+      const parts = url.split("/");
+      const breedIndex = parts.indexOf("breeds") + 1;
+      let breed = parts[breedIndex];
+
+      // Handle sub-breeds like "bulldog-french"
+      if (breed.includes("-")) {
+        breed = breed.split("-").reverse().join(" ");
+      }
+
+      return breed.charAt(0).toUpperCase() + breed.slice(1);
+    }
+  </script>
+
+</body>
+</html>
