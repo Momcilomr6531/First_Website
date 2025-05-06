@@ -5,8 +5,6 @@ https://momcilomr6531.github.io/Home.html
 
 ## Screen Recording
 
-## Screen Recording
-
 
 [Watch the Demo Video on Google Drive]( https://drive.google.com/file/d/1-Hdxp-yn-Ti4INxr7r0m7gOkPEFK7H8A/view?usp=drive_link )
 
@@ -15,13 +13,7 @@ https://momcilomr6531.github.io/Home.html
 ##  Project Summary
 **Bioethics: The Cost of Innovation** is a multi-page website that introduces visitors to three controversial technological advancements: **Bioprinting**, **Genome Editing**, and **Cybernetics**. The project aims to create an informative and visually engaging space where users can learn about these topics and reflect on their ethical implications. The site includes interactive voting pages, allowing users to express whether they support or oppose each innovation. Their votes are stored using `localStorag...
 
----
-
-## Screenshot or Screen Recording
-A screen recording of the live website is included in this repo:  
-🎥 [View screen-recording](./screen-recording.mp4)
-
----
+--- 
 
 ##  Code Snippet I'm proud of & Explanation
 ```javascript
